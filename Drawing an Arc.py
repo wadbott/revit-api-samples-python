@@ -11,6 +11,7 @@ t = Transaction(doc, 'Create Line')
  
 t.Start()
  
+ 
 #Create a plane by normal and origin
 origin = XYZ.Zero
 normal = XYZ.BasisZ
@@ -18,17 +19,18 @@ normal = XYZ.BasisZ
 plane = Plane.CreateByNormalAndOrigin(normal, origin)
 
 #Create a sketch plane
-skplane = SketchPlane.Create(doc,plane)
+skplane = SketchPlane.Create(doc,plane) 
  
-#Create line vertices
-lnStart = XYZ(0,0,0)
-lnEnd = XYZ(20,20,0)
+#Define arc parameters
+startAngle = 0
+endAngle = .5* math.pi
+radius = 10
  
-#create NewLine()
-line = Line.CreateBound(lnStart, lnEnd)
+#create NewArc()
+arc = Arc.Create(plane, radius, startAngle, endAngle)
  
 #create NewModelCurve()
-crv = doc.FamilyCreate.NewModelCurve(line, skplane)
+crv = doc.FamilyCreate.NewModelCurve(arc, skplane)
  
 t.Commit()
  
