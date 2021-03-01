@@ -23,14 +23,14 @@ skplane = SketchPlane.Create(doc,plane)
  
 #Define arc parameters
 startAngle = 0
-endAngle = .5* math.pi
-radius = 10
+endAngle = 2* math.pi
+radius = 100
  
 #create NewArc()
 arc = Arc.Create(plane, radius, startAngle, endAngle)
  
 #create NewModelCurve()
-crv = doc.FamilyCreate.NewModelCurve(arc, skplane)
+arc_crv = doc.FamilyCreate.NewModelCurve(arc, skplane)
  
 t.Commit()
  
